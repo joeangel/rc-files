@@ -81,7 +81,16 @@ set incsearch		"查询时非常方便，如要查找book单词，当输入到/b�
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd Filetype html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"autocmd FileType javascript setlocal shiftwidth=8 softtabstop=8
 autocmd Filetype markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd BufNewFile,BufRead *.json set ft=json
+autocmd FileType json setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 syntax=javascript
+"autocmd Filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"autocmd Filetype phtml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"autocmd Filetype html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
+autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre *.phtml :retab
 
 "按 F5 會自動啟用 NERDTree 檔案總管
 nnoremap <silent> <F5> :NERDTree<CR>
