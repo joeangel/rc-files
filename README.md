@@ -1,7 +1,9 @@
 
 ## Basic
 
+```
 sudo apt-get install git jq tmux
+```
 
 ## vim
 
