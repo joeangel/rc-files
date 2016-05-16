@@ -53,3 +53,6 @@ in vim, run:
 
 https://github.com/creationix/nvm#manual-install
 
+# TODO
+
+1. Merge [HackPad: Mac Init](https://dd-tech.hackpad.com/Mac-init.-lfLWcLQ1JPB) to READEME.md
