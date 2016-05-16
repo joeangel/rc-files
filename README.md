@@ -1,6 +1,7 @@
 
 # Install
 
+## Mac
 At your home directory run
 
 ```
