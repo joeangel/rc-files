@@ -32,6 +32,16 @@ in vim
 :BundleInstall
 ```
 
+install nvm and pm2
+
+https://github.com/creationix/nvm#install-script
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash && source ~/.bashrc
+npm install pm2@latest -g
+npm install bower -g
+npm install --global gulp-cli
+```
 
 ## Basic
 
