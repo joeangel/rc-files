@@ -22,7 +22,7 @@ curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash
 Your origin rc-files will move to rc_backup
 
 ```
-sudo apt-get install tmux ctags grep-ack
+sudo apt-get update && sudo apt-get install tmux ctags grep-ack
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
