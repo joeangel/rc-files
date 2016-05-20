@@ -16,7 +16,7 @@ At your home directory run
 
 ```
 # (not ready)
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash && sudo apt-get update && sudo apt-get install tmux ctags grep-ack && cd && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vi
+curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash && sudo apt-get update && sudo apt-get install tmux ctags ack-grep git jq tmux aptitude && cd && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vi
 ```
 
 Your origin rc-files will move to rc_backup
@@ -38,7 +38,7 @@ npm install bower -g
 npm install --global gulp-cli
 ```
 
-## Basic
+## Basicu
 
 ```
 sudo apt-get install git jq tmux aptitude grep-ack
