@@ -10,6 +10,25 @@ curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash
 
 Your origin rc-files will move to rc_backup
 
+### Basic
+
+```
+sudo apt-get install git jq tmux aptitude grep-ack
+```
+
+### vim
+
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+sudo apt-get install exuberant-ctags
+```
+
+in vim, run:
+
+```
+:BundleInstall
+```
+
 ## Ubuntu
 
 ### Setup
@@ -25,12 +44,6 @@ Your origin rc-files will move to rc_backup.
 
 ```
 curl https://raw.githubusercontent.com/joeangel/rc-files/master/install_nvm_ubuntu.sh | bash
-```
-
-## Basicu
-
-```
-sudo apt-get install git jq tmux aptitude grep-ack
 ```
 
 ## LANG
@@ -53,19 +66,6 @@ sudo locale-gen zh_TW.UTF-8
 sudo dpkg-reconfigure locales
 ```
 
-## vim
-
-```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-sudo apt-get install exuberant-ctags
-```
-
-in vim, run:
-
-```
-:BundleInstall
-```
-
 ## nvm
 
 https://github.com/creationix/nvm#manual-install
@@ -73,3 +73,4 @@ https://github.com/creationix/nvm#manual-install
 # TODO
 
 1. Merge [HackPad: Mac Init](https://dd-tech.hackpad.com/Mac-init.-lfLWcLQ1JPB) to READEME.md
+
