@@ -10,12 +10,6 @@ curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash
 
 Your origin rc-files will move to rc_backup
 
-### Basic
-
-```
-sudo apt-get install git jq tmux aptitude grep-ack
-```
-
 ### vim
 
 ```
