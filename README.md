@@ -33,7 +33,7 @@ in vim, run:
 At your home directory run
 
 ```
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup_ubnutu.sh | bash
+curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup_ubuntu.sh | bash
 ```
 
 Your origin rc-files will move to rc_backup.
