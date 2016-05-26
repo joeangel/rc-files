@@ -293,12 +293,12 @@ else
     start_agent;
 fi
 
-if [ -f $HOME/.nvm/nvm.sh]; then
+if [ -f $HOME/.nvm/nvm.sh ]; then
 	source $HOME/.nvm/nvm.sh
 fi
 
 # Bash git completion for OS X
-if ! exists brew; then
+if exists brew; then
 	if [ -f $(brew --prefix)/etc/bash_completion ]; then
 		. $(brew --prefix)/etc/bash_completion
 	fi
