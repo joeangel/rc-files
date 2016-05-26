@@ -10,32 +10,21 @@ curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash
 
 Your origin rc-files will move to rc_backup
 
-## Ubuntu 
+## Ubuntu
 
+### Setup
 At your home directory run
 
 ```
-# (not ready)
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash && sudo apt-get update && sudo apt-get install tmux ctags ack-grep git jq tmux aptitude && cd && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vi
+curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup_ubnutu.sh | bash
 ```
 
-Your origin rc-files will move to rc_backup
+Your origin rc-files will move to rc_backup.
 
-in vim
-
-```
-:BundleInstall
-```
-
-install nvm and pm2
-
-https://github.com/creationix/nvm#install-script
+### Install nvm
 
 ```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash && source ~/.bashrc
-npm install pm2@latest -g
-npm install bower -g
-npm install --global gulp-cli
+curl https://raw.githubusercontent.com/joeangel/rc-files/master/install_nvm_ubuntu.sh | bash
 ```
 
 ## Basicu
