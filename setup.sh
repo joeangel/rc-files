@@ -10,4 +10,4 @@ find . -maxdepth 1 ! -path . ! -path ./.git ! -path ./setup.sh ! -path ./README.
 
 # move ~/rc-files/* to ~/
 cd
-find rc-files/ -maxdepth 1 ! -path rc-files/ ! -path rc-files/.git ! -path rc-files/setup.sh -exec ln -s {} . \;
+find rc-files/ -maxdepth 1 ! -path rc-files/ ! -path rc-files/.git ! -path rc-files/.gitignore ! -path rc-files/setup.sh -exec ln -s {} . \;
