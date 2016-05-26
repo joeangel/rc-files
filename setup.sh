@@ -11,7 +11,7 @@ if ! exists brew; then
 fi
 
 # install useful tool
-brew install git ack tmux jq mtr
+brew install git ack tmux jq mtr bash-completion
 # brew install gcc cmake
 # brew install jpegoptim
 # brew install ffmpeg
