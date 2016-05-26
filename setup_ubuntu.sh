@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install useful tool
-sudo apt-get update && sudo apt-get install -y tmux exuberant-ctags ack-grep git jq tmux aptitude
+sudo apt-get update && sudo apt-get install -y tmux exuberant-ctags ack-grep git jq tmux aptitude bash-completion
 
 # clone rc-files
 cd
