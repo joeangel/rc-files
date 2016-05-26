@@ -14,14 +14,13 @@ find . -maxdepth 1 ! -path . ! -path ./.git ! -path ./setup.sh ! -path ./README.
 
 # move ~/rc-files/* to ~/
 cd
-find rc-files/ -maxdepth 1 ! -path rc-files/ ! -path rc-files/.git ! -path rc-files/.gitignore ! -path rc-files/setup.sh -exec ln -s {} . \;
-
+find rc-files/ -maxdepth 1 ! -path rc-files/ ! -path rc-files/.git ! -path rc-files/.gitignore ! -path rc-files/setup.sh ! -path rc-files/README.md ! -path rc-files/setup_ubuntu.sh ! -path rc-files/install_nvm_ubuntu.sh -exec ln -s {} . \;
 
 source ~/.bashrc
 
 # install Vundle for vim
 cd
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vi
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "1) Update ~/.bashrc for PS1 string"
 echo "2) Enter vi and type :BundleInstall"
