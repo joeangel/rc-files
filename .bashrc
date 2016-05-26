@@ -264,6 +264,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# define custom funtion
+exists() { [ ! -z `which "$1"` ]; }
+
 # ssh-agent ssh-add
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -290,17 +293,20 @@ else
     start_agent;
 fi
 
-source $HOME/.nvm/nvm.sh
+if [ -f $HOME/.nvm/nvm.sh]; then
+	source $HOME/.nvm/nvm.sh
+fi
+
+# Bash git completion for OS X
+if ! exists brew; then
+	if [ -f $(brew --prefix)/etc/bash_completion ]; then
+		. $(brew --prefix)/etc/bash_completion
+	fi
+fi
 
 # golang
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH/bin:$PATH
 
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# Bash git completion for OS X
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	. $(brew --prefix)/etc/bash_completion
-fi
 
