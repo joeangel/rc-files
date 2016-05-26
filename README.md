@@ -73,6 +73,7 @@ https://github.com/creationix/nvm#manual-install
 1. Merge [HackPad: Mac Init](https://dd-tech.hackpad.com/Mac-init.-lfLWcLQ1JPB) to READEME.md
 2. check os for custom setup.sh and .bashrc
 ```
+# ref: http://stackoverflow.com/a/8597411
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 # ...
 elif [[ "$OSTYPE" == "darwin"* ]]; then
