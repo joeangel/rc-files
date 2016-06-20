@@ -253,7 +253,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias grep-color='/bin/grep -P --color=auto'
 
 # for gcin
-export QT4_IM_MODULE=gcin
+# export QT4_IM_MODULE=gcin
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -305,8 +305,12 @@ if exists brew; then
 fi
 
 # golang
-export GOPATH=$HOME/gopath
-export PATH=$GOPATH/bin:$PATH
+# export GOPATH=$HOME/gopath
+# export PATH=$GOPATH/bin:$PATH
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+export LANGUAGE=
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_ALL=
