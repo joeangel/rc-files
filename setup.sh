@@ -30,6 +30,9 @@ find . -maxdepth 1 ! -path . ! -path ./.git ! -path ./setup.sh ! -path ./README.
 cd
 find rc-files -maxdepth 1 ! -path rc-files ! -path rc-files/.git ! -path rc-files/.gitignore ! -path rc-files/setup.sh ! -path rc-files/README.md ! -path rc-files/setup_ubuntu.sh ! -path rc-files/install_nvm_ubuntu.sh -exec ln -s {} . \;
 
+# install Vim Bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 source ~/.bashrc
 
 echo "1) Update ~/.bashrc for PS1 string"
