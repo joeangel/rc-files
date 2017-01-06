@@ -9,8 +9,13 @@
 	default = simple
 [alias]
 	lg = log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lgf = log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --name-status
+	lgp = log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --word-diff -p
 	co = commit
 	st = status
 	files = "!f() { git diff --name-status $1^ $1; }; f"
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore_global
+[credential]
+	helper = osxkeychain
