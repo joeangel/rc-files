@@ -13,10 +13,11 @@ fi
 # install useful tool
 brew install git ack tmux jq mtr bash-completion
 # brew install gcc cmake
-# brew install jpegoptim
+# brew install jpegoptim optipng
 # brew install ffmpeg
+# brew install nmap speedtest_cli
 # brew install dnsmasq mysql nvm
-
+ 
 # clone rc-files
 cd
 git clone https://github.com/joeangel/rc-files.git
