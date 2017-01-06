@@ -188,13 +188,12 @@ function start_agent {
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
     /usr/bin/ssh-add;
-# TODO
-#     /usr/bin/ssh-add $HOME/.ssh/joeangel_git_rsa
-#     /usr/bin/ssh-add $HOME/.ssh/newtalk_rsa
-#     /usr/bin/ssh-add $HOME/.ssh/bitbucket_rsa
-#     /usr/bin/ssh-add $HOME/.ssh/gitlab_cto_rsa
-#     /usr/bin/ssh-add $HOME/.ssh/whosdiary-ec2-host1.pem
-#     /usr/bin/ssh-add $HOME/.ssh/groowithyou_rsa
+    /usr/bin/ssh-add $HOME/.ssh/id_rsa #github
+    /usr/bin/ssh-add $HOME/.ssh/newtalk_rsa
+    /usr/bin/ssh-add $HOME/.ssh/bitbucket_rsa
+    /usr/bin/ssh-add $HOME/.ssh/gitlab_cto_rsa
+    /usr/bin/ssh-add $HOME/.ssh/whosdiary-ec2-host1.pem
+    /usr/bin/ssh-add $HOME/.ssh/groowithyou_rsa
     #ssh-keyscan -t rsa github.com
 }
 function parse_git_branch () {
@@ -263,8 +262,7 @@ esac
 #export PATH="$PATH:$HOME/.rvm/bin"
 
 # Android adb
-# TODO
-# alias adb=~/library/Android/sdk/platform-tools/adb
+alias adb=~/library/Android/sdk/platform-tools/adb
 
 # LANG
 export LANGUAGE=
@@ -273,11 +271,14 @@ export LC_CTYPE="en_US.UTF-8"
 export LC_ALL=
 
 # The next line updates PATH for the Google Cloud SDK.
-# TODO
-#source '/Users/joe/Downloads/google-cloud-sdk/path.bash.inc'
+if [ -f /Users/joe/Downloads/google-cloud-sdk/path.bash.inc ]; then
+  source '/Users/joe/Downloads/google-cloud-sdk/path.bash.inc'
+fi
 
 # The next line enables shell command completion for gcloud.
-# TODO
-#source '/Users/joe/Downloads/google-cloud-sdk/completion.bash.inc'
+if [ -f /Users/joe/Downloads/google-cloud-sdk/completion.bash.inc ]; then
+  source '/Users/joe/Downloads/google-cloud-sdk/completion.bash.inc'
+fi
 
 export PATH="/usr/local/sbin:$PATH"
+
