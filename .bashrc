@@ -26,7 +26,10 @@ alias history.rank="awk '/^[^#]/ {print $1}' ~/.bash_history | sort | uniq -c | 
 # history file will be re-written and re-read each time bash shows the prompt
 #PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 #PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -n"
+if [ ! -z "$PROMPT_COMMAND" ]; then
+	PROMPT_COMMAND="$PROMPT_COMMAND; "
+fi
+PROMPT_COMMAND="history -a; history -n"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
