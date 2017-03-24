@@ -16,9 +16,8 @@ find . -maxdepth 1 ! -path . ! -path ./.git ! -path ./setup.sh ! -path ./README.
 cd
 find rc-files/ -maxdepth 1 ! -path rc-files/ ! -path rc-files/.git ! -path rc-files/.gitignore ! -path rc-files/setup.sh ! -path rc-files/README.md ! -path rc-files/setup_ubuntu.sh ! -path rc-files/install_nvm_ubuntu.sh -exec ln -s {} . \;
 
- +echo 'set-option -g prefix C-n' >> .tmux.conf
- +rm -y .bashrc
- +ln -s rc-files/.bashrc_pure .bashrc
+echo 'set-option -g prefix C-n' >> .tmux.conf
+mv .bashrc_pure .bashrc
 
 source ~/.bashrc
 
