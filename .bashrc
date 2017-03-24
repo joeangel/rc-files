@@ -192,8 +192,10 @@ function start_agent {
     /usr/bin/ssh-add $HOME/.ssh/newtalk_rsa
     /usr/bin/ssh-add $HOME/.ssh/bitbucket_rsa
     /usr/bin/ssh-add $HOME/.ssh/gitlab_cto_rsa
-    /usr/bin/ssh-add $HOME/.ssh/whosdiary-ec2-host1.pem
     /usr/bin/ssh-add $HOME/.ssh/groowithyou_rsa
+    /usr/bin/ssh-add $HOME/.ssh/gitlab_rsa
+    /usr/bin/ssh-add $HOME/.ssh/fongyuan_rsa
+    /usr/bin/ssh-add $HOME/.ssh/aws_tozzi_rsa
     #ssh-keyscan -t rsa github.com
 }
 function parse_git_branch () {
