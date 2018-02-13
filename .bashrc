@@ -234,9 +234,8 @@ fi
 
 # for PS1
 if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # PS1="${RED}\t ${YELLOW} MBPr ${debian_chroot:+($debian_chroot)}${LIGHT_GREEN}\u@\h${NO_COLOR}:${BLUE}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\$ "
-    PS1="${RED}\t ${LIGHT_GREEN}\u@JoeAngel.tw${debian_chroot:+($debian_chroot)}${NO_COLOR}\n${BLUE}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\n\$ "
+    # PS1="${RED}\t ${LIGHT_GREEN}\u@JoeAngel.tw${debian_chroot:+($debian_chroot)}${NO_COLOR}\n${BLUE}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\n\$ "
+    PS1="${RED}\t ${LIGHT_GREEN}\u@\h${debian_chroot:+($debian_chroot)}${NO_COLOR}\n${BLUE}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\n\$ "
 else
     PS1='\t ${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
