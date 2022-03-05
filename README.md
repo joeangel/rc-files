@@ -14,17 +14,38 @@ Your origin rc-files will move to rc_backup
 
 https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion
 
-### vim
+### install vim plugins
 
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-sudo apt-get install exuberant-ctags
+brew install ctags-exuberant
 ```
 
 in vim, run:
 
 ```
 :BundleInstall
+```
+
+### vim ctags usage
+
+```
+ctags -R --exclude=@.ctagsignore .
+```
+
+### vim javascript ctag
+
+ref: [js ctags使用(vim)](https://www.twblogs.net/a/5b9fe2202b71771a4da842de)
+
+install
+
+```
+npm install -g git+https://github.com/ramitos/jsctags.git
+```
+usage
+
+```
+find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | LANG=C sort > tags
 ```
 
 ## Ubuntu
@@ -37,6 +58,19 @@ curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup_ubuntu.sh 
 ```
 
 Your origin rc-files will move to rc_backup.
+
+### install vim plugins
+
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+sudo apt-get install exuberant-ctags
+```
+
+in vim, run:
+
+```
+:BundleInstall
+```
 
 ### Install nvm
 
