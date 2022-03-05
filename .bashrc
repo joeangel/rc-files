@@ -18,15 +18,21 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=50000
+HISTSIZE=1000000
+HISTFILESIZE=5000000
 HISTTIMEFORMAT='<%F %T %z> : '
 alias history.rank="awk '/^[^#]/ {print $1}' ~/.bash_history | sort | uniq -c | sort -nr | head -n 20"
 
 # history file will be re-written and re-read each time bash shows the prompt
 #PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 #PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -n"
+#PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -n"
+if [ -z “$(type -t update_terminal_cwd)” ] || [ “$(type -t update_terminal_cwd)” != “function” ]; then
+	update_terminal_cwd() {
+		true
+	}
+fi
+PROMPT_COMMAND="update_terminal_cwd; history -a; history -n"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -162,6 +168,7 @@ YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 LIGHT_GREEN="\[\033[01;32m\]"
 BLUE="\[\033[01;34m\]"
+CYAN="\[\033[01;36m\]"
 NO_COLOR="\[\033[00m\]"
 
 
@@ -190,12 +197,20 @@ function start_agent {
     /usr/bin/ssh-add;
     /usr/bin/ssh-add $HOME/.ssh/id_rsa #github
     /usr/bin/ssh-add $HOME/.ssh/newtalk_rsa
-    /usr/bin/ssh-add $HOME/.ssh/bitbucket_rsa
     /usr/bin/ssh-add $HOME/.ssh/gitlab_cto_rsa
     /usr/bin/ssh-add $HOME/.ssh/groowithyou_rsa
     /usr/bin/ssh-add $HOME/.ssh/gitlab_rsa
     /usr/bin/ssh-add $HOME/.ssh/fongyuan_rsa
     /usr/bin/ssh-add $HOME/.ssh/aws_tozzi_rsa
+    /usr/bin/ssh-add $HOME/.ssh/toplogis34_rsa
+    /usr/bin/ssh-add $HOME/.ssh/fongyuan_linode_rsa
+    /usr/bin/ssh-add $HOME/.ssh/bitbucket_rsa
+    /usr/bin/ssh-add $HOME/.ssh/bitbucket_infiniumone_rsa
+    /usr/bin/ssh-add $HOME/.ssh/aliyun_omg_rsa #Aliyun Cober OMG
+    /usr/bin/ssh-add $HOME/.ssh/joe-test-20200415_rsa
+    /usr/bin/ssh-add $HOME/.ssh/aws_lig_rsa #Liaoguy CTK Git
+    /usr/bin/ssh-add $HOME/.ssh/joe_ai_pc_fio_rsa #FiO AI PC
+    /usr/bin/ssh-add $HOME/.ssh/fio_ai_pc_fio_rsa #FiO AI PC
     #ssh-keyscan -t rsa github.com
 }
 function parse_git_branch () {
@@ -234,7 +249,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # PS1="${RED}\t ${YELLOW} MBPr ${debian_chroot:+($debian_chroot)}${LIGHT_GREEN}\u@\h${NO_COLOR}:${BLUE}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\$ "
-    PS1="${RED}\t ${LIGHT_GREEN}\u@JoeAngel.tw${debian_chroot:+($debian_chroot)}${NO_COLOR}\n${BLUE}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\n\$ "
+    PS1="${RED}\t ${LIGHT_GREEN}\u@JoeAngel.tw${debian_chroot:+($debian_chroot)}${NO_COLOR}\n${CYAN}\w${YELLOW}\$(parse_git_branch)$NO_COLOR\n\$ "
 else
     PS1='\t ${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
@@ -266,6 +281,11 @@ esac
 # Android adb
 alias adb=~/library/Android/sdk/platform-tools/adb
 
+# Nginx
+alias nginx.start='sudo nginx'
+alias nginx.stop='sudo nginx -s stop'
+alias nginx.reload='sudo nginx -s reload'
+
 # LANG
 export LANGUAGE=
 export LANG="en_US.UTF-8"
@@ -284,3 +304,147 @@ fi
 
 export PATH="/usr/local/sbin:$PATH"
 
+# npm
+export PATH="$HOME/.npm-packages/bin:$PATH"
+
+# Oracle for npm
+export ORACLE_HOME=~/oracle
+export DYLD_LIBRARY_PATH=$ORACLE_HOME
+export LD_LIBRARY_PATH=$ORACLE_HOME
+export OCI_LIB_DIR=$ORACLE_HOME
+export OCI_INC_DIR=$ORACLE_HOME/sdk/include
+
+
+alias gcloud-config-list="gcloud config configurations list"
+
+GOOGLE_APPLICATION_CREDENTIALS=~/fluted-set-132923-49508f6b703e.json
+export PATH="$PATH:$HOME/go/bin"
+export GOPATH="$GOPATH:$HOME/go"
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+###-begin-pm2-completion-###
+### credits to npm for the completion file model
+#
+# Installation: pm2 completion >> ~/.bashrc  (or ~/.zshrc)
+#
+
+COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+export COMP_WORDBREAKS
+
+if type complete &>/dev/null; then
+  _pm2_completion () {
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           pm2 completion -- "${COMP_WORDS[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -o default -F _pm2_completion pm2
+elif type compctl &>/dev/null; then
+  _pm2_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       pm2 completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _pm2_completion + -f + pm2
+fi
+###-end-pm2-completion-###
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+if type complete &>/dev/null; then
+  _npm_completion () {
+    local words cword
+    if type _get_comp_words_by_ref &>/dev/null; then
+      _get_comp_words_by_ref -n = -n @ -n : -w words -i cword
+    else
+      cword="$COMP_CWORD"
+      words=("${COMP_WORDS[@]}")
+    fi
+
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${words[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+    if type __ltrim_colon_completions &>/dev/null; then
+      __ltrim_colon_completions "${words[cword]}"
+    fi
+  }
+  complete -o default -F _npm_completion npm
+elif type compdef &>/dev/null; then
+  _npm_completion() {
+    local si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _npm_completion npm
+elif type compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###
+
+
+## GOLANG
+export GOROOT=$HOME/go
+export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/golang
+export PATH=$PATH:$GOBIN
+
+#金庸 Legend
+alias legend="vi -b /Users/joe/Library/Application\ Support/Boxer/Gamebox\ States/DED694755166642CD8BFAB378116CC453CA4BD35/Current.boxerstate/C.harddisk/legend/R1.GRP"
+
+#basher
+export PATH="$HOME/.basher/bin:$PATH"   ##basher5ea843
+eval "$(basher init - bash)"             ##basher5ea843
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# openjdk. ignore if you need to use java from macOS internal version
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+
+# ~/git/apicurio-studio
+export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
+
+. "$HOME/.cargo/env"
