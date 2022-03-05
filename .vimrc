@@ -146,14 +146,14 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 "在資料夾根目錄輸入 cscope -bR 讓 cscpe 建立資料
 cs add /home/joe10330/git/eserv/cscope.out /home/joe10330/git/eserv/
 
-nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-/>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-/>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-/>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-/>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-/>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-/>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-/>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "Theme color
 "highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
