@@ -105,6 +105,15 @@ autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expand
 autocmd Filetype markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
+" bdd: https://cucumber.io/
+autocmd BufNewFile,BufRead *.feature set syntax=cucumber
+autocmd FileType cucumber setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+"autocmd BufReadPre *.feature let b:javascript_lib_use_jquery = 0
+"autocmd BufReadPre *.feature let b:javascript_lib_use_underscore = 0
+"autocmd BufReadPre *.feature let b:javascript_lib_use_backbone = 0
+"autocmd BufReadPre *.feature let b:javascript_lib_use_react = 0
+"autocmd BufReadPre *.feature let b:javascript_lib_use_chai = 1
+
 "softtabstop: replace tab
 autocmd BufNewFile,BufRead *.vue set syntax=javascript filetype=html
 
