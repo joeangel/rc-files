@@ -79,8 +79,8 @@ set incsearch		"查询时非常方便，如要查找book单词，当输入到/b�
 
 " :setlocal can check Filetype
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-autocmd Filetype html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"autocmd Filetype html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "autocmd FileType javascript setlocal shiftwidth=8 softtabstop=8
 autocmd Filetype markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd BufNewFile,BufRead *.json set ft=json
@@ -88,6 +88,16 @@ autocmd FileType json setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 
 "autocmd Filetype php setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "autocmd Filetype phtml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "autocmd Filetype html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
+"autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab "aio
+"softtabstop: replace tab
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab "aio
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab "aio
+autocmd BufNewFile,BufRead *.vue set syntax=javascript filetype=html
+"autocmd Filetype html setlocal tabstop=4 noexpandtab "aio for html tab
+
+autocmd User Node if &filetype == "javascript" | setlocal expandtab | endif
+set runtimepath^=~/.vim/bundle/node
 
 autocmd BufWritePre * :%s/\s\+$//e
 "autocmd BufWritePre *.phtml :retab
@@ -124,7 +134,7 @@ nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-filetype plugin on 
+filetype plugin on
 let g:BASH_AuthorName   = 'Joe Angel'
 let g:BASH_Email        = 'joe10330@@gmail.com'
 let g:BASH_Company      = 'none'
