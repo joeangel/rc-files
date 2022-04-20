@@ -201,14 +201,10 @@ function start_agent {
     /usr/bin/ssh-add $HOME/.ssh/groowithyou_rsa
     /usr/bin/ssh-add $HOME/.ssh/gitlab_rsa
     /usr/bin/ssh-add $HOME/.ssh/fongyuan_rsa
-    /usr/bin/ssh-add $HOME/.ssh/aws_tozzi_rsa
-    /usr/bin/ssh-add $HOME/.ssh/toplogis34_rsa
     /usr/bin/ssh-add $HOME/.ssh/fongyuan_linode_rsa
     /usr/bin/ssh-add $HOME/.ssh/bitbucket_rsa
     /usr/bin/ssh-add $HOME/.ssh/bitbucket_infiniumone_rsa
-    /usr/bin/ssh-add $HOME/.ssh/aliyun_omg_rsa #Aliyun Cober OMG
     /usr/bin/ssh-add $HOME/.ssh/joe-test-20200415_rsa
-    /usr/bin/ssh-add $HOME/.ssh/aws_lig_rsa #Liaoguy CTK Git
     /usr/bin/ssh-add $HOME/.ssh/joe_ai_pc_fio_rsa #FiO AI PC
     /usr/bin/ssh-add $HOME/.ssh/fio_ai_pc_fio_rsa #FiO AI PC
     #ssh-keyscan -t rsa github.com
@@ -313,6 +309,18 @@ export DYLD_LIBRARY_PATH=$ORACLE_HOME
 export LD_LIBRARY_PATH=$ORACLE_HOME
 export OCI_LIB_DIR=$ORACLE_HOME
 export OCI_INC_DIR=$ORACLE_HOME/sdk/include
+
+# Google Sources reps for git
+eval 'set +o history' 2>/dev/null || setopt HIST_IGNORE_SPACE 2>/dev/null
+ touch ~/.gitcookies
+ chmod 0600 ~/.gitcookies
+
+ git config --global http.cookiefile ~/.gitcookies
+
+ tr , \\t <<\__END__ >>~/.gitcookies
+source.developers.google.com,FALSE,/,TRUE,2147483647,o,git-joe.cto.tw=1/K9xe2F5fruQ_NWIH05AeXKihArIIOv6p3nurFjJpRxo
+__END__
+eval 'set -o history' 2>/dev/null || unsetopt HIST_IGNORE_SPACE 2>/dev/null
 
 
 alias gcloud-config-list="gcloud config configurations list"
@@ -448,3 +456,17 @@ export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
 
 . "$HOME/.cargo/env"
+
+# Kubectl auto completion
+source <(kubectl completion bash)
+alias k=kubectl
+complete -F __start_kubectl k
+
+# go ethereum
+export PATH=~/downloads/geth-darwin-amd64-1.10.15-8be800ff:$PATH
+
+
+
+# in the last
+export PATH=$(echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}')
+

@@ -120,6 +120,9 @@ autocmd BufNewFile,BufRead *.vue set syntax=javascript filetype=html
 " set expandtab when spefic filetype
 autocmd User Node if &filetype == "javascript" | setlocal expandtab | endif
 
+" shell script
+autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
 set runtimepath^=~/.vim/bundle/node
 
 " Python
