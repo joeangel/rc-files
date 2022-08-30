@@ -38,3 +38,5 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 . "$HOME/.cargo/env"
+
+[[ -s "/Users/joe/.gvm/scripts/gvm" ]] && source "/Users/joe/.gvm/scripts/gvm"
