@@ -34,7 +34,11 @@ Plugin 'nathanaelkane/vim-indent-guides'
 "https://github.com/feix760/vim-javascript-gf
 "Plugin 'feix760/vim-javascript-gf'
 
-"https://github.com/JamshedVesuna/vim-markdown-preview
+" Markdown preview
+" url: https://github.com/JamshedVesuna/vim-markdown-preview
+" shortcut: (Default) '<C-p>'
+" description:
+" - let vim_markdown_preview_hotkey='<C-m>'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='Google Chrome'
@@ -71,11 +75,15 @@ set showmode            "左下角那一行的狀態
 set nu                  "可以在每一行的最前面顯示行號啦！
 set bg=dark             "顯示不同的底色色調
 color industry          " Same as :colorscheme industry
+"color ron          " Same as :colorscheme industry
+" termcap pablo
 set cursorline          " 啟用行游標提示。
+
 ":hi 等同 :highlight
-"hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 "hi CursorLineNr cterm=bold ctermfg=Green ctermbg=NONE
 "set t_Co=256
+"hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
+
 syntax enable
 syntax on               "進行語法檢驗，顏色顯示。
 
@@ -132,6 +140,9 @@ au FileType python setlocal expandtab shiftwidth=4 tabstop=4 smartindent cinword
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 au FileType python set foldmethod=indent foldlevel=99
 
+"PHP+HTML
+autocmd BufNewFile,BufRead *.php set filetype=html syntax=php
+
 autocmd BufWritePre * :%s/\s\+$//e
 "autocmd BufWritePre *.phtml :retab
 
@@ -177,3 +188,18 @@ filetype plugin on
 let g:BASH_AuthorName   = 'Joe Angel'
 let g:BASH_Email        = 'joe10330@@gmail.com'
 let g:BASH_Company      = 'none'
+
+
+"https://medium.com/usevim/vim-101-jumping-between-files-f9e16f79f63a
+":set suffixesadd+=.js
+
+"set t_Co=256
+set t_Co=16
+hi CursorLine gui=underline cterm=underline
+"hi Visual cterm=none ctermbg=darkgrey ctermfg=cyan
+hi Visual cterm=none ctermfg=NONE ctermbg=8
+hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
+hi CursorLineNr ctermbg=NONE cterm=bold ctermfg=Green
+set cursorline
+
+
