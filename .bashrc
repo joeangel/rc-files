@@ -487,6 +487,9 @@ export PATH=~/downloads/geth-darwin-amd64-1.10.15-8be800ff:$PATH
 # in the last
 export PATH=$(echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}')
 
+# for node17+
+#export NODE_OPTIONS=--openssl-legacy-provider
+
 # install golang
 # $ brew install go && \
 #   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) && \
