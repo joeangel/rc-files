@@ -243,6 +243,9 @@ if exists brew; then
 	if [ -f $(brew --prefix nvm)/nvm.sh ]; then
 		. "$(brew --prefix nvm)/nvm.sh"
 	fi
+
+  # alias
+  alias brew-update-joeangel="brew outdated | grep -vE \"(node|mysql|pyenv|python|tesseract|tmux|tomcat)\" | xargs brew upgrade"
 fi
 
 
