@@ -469,6 +469,11 @@ export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
 
 . "$HOME/.cargo/env"
 
+# which kubectl
+# - don't use Docker Desktop verison
+# - use ~/Downloads/google-cloud-sdk/bin/kubectl
+rm -f /usr/local/bin/kubectl
+
 # Kubectl auto completion
 source <(kubectl completion bash)
 alias k=kubectl
