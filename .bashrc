@@ -338,8 +338,8 @@ eval 'set -o history' 2>/dev/null || unsetopt HIST_IGNORE_SPACE 2>/dev/null
 alias gcloud-config-list="gcloud config configurations list"
 
 GOOGLE_APPLICATION_CREDENTIALS=~/fluted-set-132923-49508f6b703e.json
-export PATH="$PATH:$HOME/go/bin"
-export GOPATH="$GOPATH:$HOME/go"
+#export PATH="$PATH:$HOME/go/bin"
+#export GOPATH="$GOPATH:$HOME/go"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 ###-begin-pm2-completion-###
@@ -445,10 +445,10 @@ fi
 
 
 ## GOLANG
-export GOROOT=$HOME/go
-export GOBIN=$GOROOT/bin
-export GOPATH=$HOME/golang
-export PATH=$PATH:$GOBIN
+#export GOROOT=$HOME/go
+#export GOBIN=$GOROOT/bin
+#export GOPATH=$HOME/golang
+#export PATH=$PATH:$GOBIN
 
 #金庸 Legend
 alias legend="vi -b /Users/joe/Library/Application\ Support/Boxer/Gamebox\ States/DED694755166642CD8BFAB378116CC453CA4BD35/Current.boxerstate/C.harddisk/legend/R1.GRP"
@@ -481,4 +481,13 @@ export PATH=~/downloads/geth-darwin-amd64-1.10.15-8be800ff:$PATH
 
 # in the last
 export PATH=$(echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}')
+
+# install golang
+# $ brew install go && \
+#   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) && \
+#   gvm use go1.19 --default && \
+#   brew uninstall go && \
+#   echo "export GOROOT_BOOTSTRAP=$GOROOT" >> ~/.bashrc
+export GOROOT_BOOTSTRAP=/Users/joe/.gvm/gos/go1.19
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
