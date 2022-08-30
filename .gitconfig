@@ -17,6 +17,7 @@
 	co = commit
 	st = status
 	files = "!f() { git diff --name-status $1^ $1; }; f"
+	files-diff = !git diff --name-only `git rev-parse --abbrev-ref HEAD` $(git merge-base `git rev-parse --abbrev-ref HEAD` dev)
 	pp = !git stash && git pull --rebase && git push && git stash apply --index
 	push-u = !git push -u origin `git rev-parse --abbrev-ref HEAD`
 [core]
