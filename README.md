@@ -1,104 +1,78 @@
 
 # Install
 
-## Mac
-At your home directory run
+### TODO
 
-```
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup.sh | bash
-```
+- ssh key
+- sudo without password
+- create swap
 
-Your origin rc-files will move to rc_backup
+## setup ssh via key
 
-### Install Bash git completion
-
-https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion
-
-### vim
-
-```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-sudo apt-get install exuberant-ctags
+```bash
+cat ~/.ssh/id_YOUR_KEY_NAME.pub | ssh <user>@<hostname> 'cat >> .ssh/authorized_keys && echo "Key copied"'
 ```
 
-in vim, run:
+## setup
 
-```
-:BundleInstall
-```
+sudo without password
 
-## Ubuntu
-
-### Setup
-At your home directory run
-
-```
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup_ubuntu.sh | bash
+```bash
+echo "ubuntu ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ubuntu-nopasswd
+sudo chmod 0440 /etc/sudoers.d/ubuntu-nopasswd
+sudo visudo -c
+sudo -k && sudo whoami
 ```
 
-Your origin rc-files will move to rc_backup.
+rc-files
 
-### Install nvm
-
-```
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/install_nvm_ubuntu.sh | bash
-```
-
-## Ubuntu for aws
-
-### Setup
-At your home directory run
-
-```
-curl https://raw.githubusercontent.com/joeangel/rc-files/master/setup_aws_ubuntu.sh | bash
+```bash
+cd ~
+curl -OL https://raw.githubusercontent.com/joeangel/rc-files/refs/heads/clean-ubuntu-server/.bashrc
+curl -OL https://raw.githubusercontent.com/joeangel/rc-files/refs/heads/clean-ubuntu-server/.bash_aliases
+curl -OL https://raw.githubusercontent.com/joeangel/rc-files/refs/heads/clean-ubuntu-server/.inputrc
+curl -OL https://raw.githubusercontent.com/joeangel/rc-files/refs/heads/clean-ubuntu-server/.tmux.conf
 ```
 
-## LANG
+install packages
 
-Delete from ~/.bashrc or ~/.bashprofile
-
-```
-LANGUAGE=en_US:en
-LANG=en_US.UTF-8
+```bash
+# Q: use apt instead of apt-get?
+sudo apt-get update && sudo apt-get install -y tmux ack-grep git jq bash-completion
 ```
 
-Add in ~/.bashrc
+install docker
 
+https://docs.docker.com/engine/install/ubuntu/
+
+setup docker
+
+```bash
+docker info | grep -E "Docker Root Dir|Context|Rootless|Storage Driver"
+id;groups
+sudo usermod -aG docker ubuntu
+newgrp docker
+# logout and then login
+id;groups
 ```
-export LANGUAGE=
-export LANG="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_ALL=
-```
 
-```
-sudo locale-gen zh_TW.UTF-8
-# sudo dpkg-reconfigure locales
-```
+`/etc/docker/daemon.json`
 
-## nvm
-
-https://github.com/creationix/nvm#manual-install
-
-# TODO
-
-1. Merge [HackPad: Mac Init](https://dd-tech.hackpad.com/Mac-init.-lfLWcLQ1JPB) to READEME.md
-2. check os for custom setup.sh and .bashrc
-```
-# ref: http://stackoverflow.com/a/8597411
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-# ...
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-# Mac OSX
-elif [[ "$OSTYPE" == "cygwin" ]]; then
-# POSIX compatibility layer and Linux environment emulation for Windows
-  elif [[ "$OSTYPE" == "msys" ]]; then
-# Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-  elif [[ "$OSTYPE" == "win32" ]]; then
-# I'm not sure this can happen.
-  elif [[ "$OSTYPE" == "freebsd"* ]]; then
-# ...
-  else
-# Un
+```json
+{
+    "data-root": "/data/docker",
+    "live-restore": true,
+    "log-driver": "json-file",
+    "log-opts": {
+            "max-size": "10m",
+            "max-file": "5"
+    },
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "nvidia-container-runtime"
+        }
+    }
+}
 ```
 
